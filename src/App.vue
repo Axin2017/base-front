@@ -7,6 +7,19 @@
     <router-view/>
   </div>
 </template>
+<script>
+import request from '@/utils/request'
+export default {
+  mounted () {
+    request({
+      method: 'get',
+      url: '/mockjs/2/affairs/getPoliciesAndRegulations'
+    }).then(d => {
+      console.log(d)
+    })
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
