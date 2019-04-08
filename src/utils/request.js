@@ -4,8 +4,8 @@ const isDebugging = () => localStorage.debug
 
 // create axios instance
 const request = axios.create({
-  baseURL: process.env.VUE_APP_BASE_URL,// base url
-  withCredentials: true,// wether send cookie when crossing origin
+  baseURL: process.env.VUE_APP_BASE_URL, // base url
+  withCredentials: true, // wether send cookie when crossing origin
   timeout: 8000
 })
 
@@ -28,7 +28,7 @@ request.interceptors.response.use(
   response => {
     const res = response.data
     if (res.code !== 200) {
-      return Promise.reject('error')
+      return Promise.reject(new Error('error'))
     } else {
       return res
     }
