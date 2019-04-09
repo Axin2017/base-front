@@ -18,7 +18,6 @@ request.interceptors.request.use(
   },
   error => {
     // Do something with request error
-    isDebugging && console.log(error) // for debug
     return Promise.reject(error)
   }
 )
@@ -27,14 +26,29 @@ request.interceptors.request.use(
 request.interceptors.response.use(
   response => {
     const res = response.data
-    if (res.code !== 200) {
+    if (isDebugging()) {
+      const url = response.config.baseURL + response.config.url
+      console.log(
+        `%c${url}\n%c${JSON.stringify(res)}`,
+        'color:blue',
+        'color:green'
+      )
+    }
+    if (response.status !== 200) {
       return Promise.reject(new Error('error'))
     } else {
       return res
     }
   },
   error => {
-    isDebugging && console.log('err' + error) // for debug
+    if (isDebugging()) {
+      const url = error.config.baseURL + error.config.url
+      console.log(
+        `%c${url}\n%c${JSON.stringify(url)}`,
+        'color:blue',
+        'color:green'
+      )
+    }
     return Promise.reject(error)
   }
 )

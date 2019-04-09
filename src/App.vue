@@ -13,10 +13,15 @@ export default {
   mounted () {
     request({
       method: 'get',
-      url: '/mockjs/2/affairs/getPoliciesAndRegulations'
-    }).then(d => {
-      console.log(d)
+      url: '/waterEcology/getWaterConservation',
+      params: { sindex: 2 }
     })
+      .then(d => {
+        console.log(d)
+      })
+      .catch(e => {
+        console.log(e)
+      })
   }
 }
 </script>
