@@ -8,8 +8,8 @@ module.exports = {
     '@vue/standard'
   ],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    "space-before-function-paren": "off", // 方法括号前加空格
+    "space-before-blocks":"off" //块前加空格
   },
   parserOptions: {
     parser: 'babel-eslint'

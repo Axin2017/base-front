@@ -10,7 +10,7 @@
 <script>
 import request from '@/utils/request'
 export default {
-  mounted () {
+  mounted() {
     request({
       method: 'get',
       url: '/waterEcology/getWaterConservation',
