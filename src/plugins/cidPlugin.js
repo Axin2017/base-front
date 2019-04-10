@@ -10,8 +10,7 @@ export default {
       mounted() {
         const name = this.$options.name
         name && this.$el && this.$el.setAttribute('cid', name)
-      },
-      destroyed() {}
+      }
     })
   }
 }
