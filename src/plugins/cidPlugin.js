@@ -9,7 +9,8 @@ export default {
     Vue.mixin({
       mounted() {
         const name = this.$options.name
-        name && this.$el && this.$el.setAttribute('cid', name)
+        const el = this.$el
+        name && el && el.setAttribute('cid', name)
       }
     })
   }
