@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const isDebugging = () => localStorage.debug
+let isDebugging = () => localStorage.debug === 'true'
 
 // create axios instance
 const request = axios.create({
@@ -27,7 +27,8 @@ request.interceptors.response.use(
   response => {
     const res = response.data
     if (isDebugging()) {
-      const url = response.config.baseURL + response.config.url
+      const config = response.config
+      const url = config.baseURL + config.url
       console.log(
         `%c${url}\n%c${JSON.stringify(res)}`,
         'color:blue',
@@ -42,11 +43,12 @@ request.interceptors.response.use(
   },
   error => {
     if (isDebugging()) {
-      const url = error.config.baseURL + error.config.url
+      const config = error.config
+      const url = config.baseURL + config.url
       console.log(
-        `%c${url}\n%c${JSON.stringify(url)}`,
+        `%c${url}\n%c${error}`,
         'color:blue',
-        'color:green'
+        'color:red'
       )
     }
     return Promise.reject(error)

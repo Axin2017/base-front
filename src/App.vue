@@ -7,24 +7,6 @@
     <router-view/>
   </div>
 </template>
-<script>
-import request from '@/utils/request'
-export default {
-  mounted() {
-    request({
-      method: 'get',
-      url: '/waterEcology/getWaterConservation',
-      params: { sindex: 2 }
-    })
-      .then(d => {
-        console.log(d)
-      })
-      .catch(e => {
-        console.log(e)
-      })
-  }
-}
-</script>
 
 <style lang="scss">
 #app {
