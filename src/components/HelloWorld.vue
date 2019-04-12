@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import request from '@/utils/request'
+import testApi from '@/api/testApi'
 export default {
   name: 'HelloWorld',
   props: {
@@ -13,11 +13,7 @@ export default {
   },
   methods: {
     testHttp(){
-      request({
-        method: 'get',
-        url: '/waterEcology/getWaterConservation',
-        params: { sindex: 2 }
-      })
+      testApi.test({ sindex: 2 })
         .then(d => {
           console.log(d)
         })
