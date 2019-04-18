@@ -1,6 +1,6 @@
 <template>
   <div :style="{width:width,height:height}">
-    <el-scrollbar class="sc">
+    <el-scrollbar :native="false" :class="{'scroll-box-vertical':isVertical,'scroll-box-horizontal':isHorizontal}" :tag="tag">
       <slot/>
     </el-scrollbar>
   </div>
@@ -22,6 +22,15 @@ export default {
     tag: {
       type: String,
       default: 'div'
+    },
+    // 是否是纵向滚动
+    isVertical: {
+      type: Boolean,
+      default: true
+    },
+    // 是否是横向滚动
+    isHorizontal: {
+      type: Boolean
     }
   },
   data() {
@@ -35,7 +44,11 @@ export default {
 }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-.sc{
+.scroll-box-vertical{
   height: 100%;
+}
+.scroll-box-horizontal{
+  width: 100%;
+  white-space: nowrap;
 }
 </style>

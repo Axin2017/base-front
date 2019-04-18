@@ -4,7 +4,8 @@ import router from './router'
 import store from './store'
 import { registerPlugins } from './plugins'
 import Element from 'element-ui'
-
+import 'element-ui/lib/theme-chalk/index.css'
+import '@/styles/index.scss' // global css
 Vue.config.productionTip = false
 // 注册自定义插件
 registerPlugins(Vue)
