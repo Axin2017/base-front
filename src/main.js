@@ -3,10 +3,16 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import { registerPlugins } from './plugins'
+import Element from 'element-ui'
 
 Vue.config.productionTip = false
 // 注册自定义插件
 registerPlugins(Vue)
+
+// elment-ui
+Vue.use(Element, {
+  size: 'small' // set element-ui default size
+})
 
 new Vue({
   router,
