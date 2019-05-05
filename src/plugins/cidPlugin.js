@@ -5,12 +5,19 @@
  *@note: 请为每个组件添加name属性，否则无法起作用
 */
 export default {
-  install(Vue, options){
+  install(Vue){
     Vue.mixin({
       mounted() {
         const name = this.$options.name
         const el = this.$el
-        name && el && el.setAttribute('cid', name)
+        // 排除第三方组件，笨办法,可能会误伤
+        const extrasReg = [
+          /^El[A-Z]+/ // elemetn-ui
+        ]
+        if (name && el){
+          const isExtras = extrasReg.some(reg => reg.test(name))
+          !isExtras && el.setAttribute('cid', name)
+        }
       }
     })
   }

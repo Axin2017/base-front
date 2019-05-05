@@ -1,23 +1,14 @@
 <template>
-  <div :style="{width:width,height:height}">
-    <el-scrollbar :native="false" :class="{'scroll-box-vertical':isVertical,'scroll-box-horizontal':isHorizontal}" :tag="tag">
-      <slot/>
-    </el-scrollbar>
-  </div>
+  <el-scrollbar :native="false" :class="['scroll-box',{'scroll-box-horizontal':isHorizontal}]" :tag="tag">
+    <slot/>
+  </el-scrollbar>
 </template>
 <script>
+// https://github.com/ElemeFE/element/blob/dev/packages/scrollbar/src/main.js
 export default {
   name: 'ScrollDiv',
   components: {},
   props: {
-    width: {
-      type: String,
-      required: true
-    },
-    height: {
-      type: String,
-      required: true
-    },
     // 渲染后的标签
     tag: {
       type: String,
@@ -44,10 +35,10 @@ export default {
 }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-.scroll-box-vertical{
+.scroll-box {
   height: 100%;
 }
-.scroll-box-horizontal{
+.scroll-box-horizontal {
   width: 100%;
   white-space: nowrap;
 }

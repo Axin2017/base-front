@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <button @click="testHttp">测试网络请求</button>
-    <ScrollDiv height="300px" width="200px" >
+    <ScrollDiv class="sc">
       <div>
       阿斯蒂芬卡斯的看法啊撒旦看风景阿斯蒂芬阿克苏的flak士大夫拉萨酱豆腐立刻就哦i去我家弗兰克,
       </div>
@@ -51,18 +51,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.sc{
+  width:200px;
+  height: 200px;
+  margin: auto;
 }
 </style>
