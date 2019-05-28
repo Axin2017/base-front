@@ -8,7 +8,16 @@
   </div>
 </template>
 
-<style lang="scss">
+<script>
+import resizeMixin from '@/mixins/resize'
+export default {
+  name: 'App',
+  mixins: [resizeMixin]
+}
+</script>
+
+
+<style lang="scss" scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -18,6 +27,7 @@
 }
 #nav {
   padding: 30px;
+  font-size: 16px;
   a {
     font-weight: bold;
     color: #2c3e50;
