@@ -1,7 +1,9 @@
 function getPlugins() {
   const plugins = []
-  // postcss-lugin-px2rem
-  if (process.env.VUE_APP_PXTOREM_ON) {
+  /* postcss-lugin-px2rem
+   * use with resizeMixin
+   */
+  if (process.env.VUE_APP_PXTOREM_ON === 'true') {
     plugins.push(
       require('postcss-plugin-px2rem')({
         remUnit: 100,

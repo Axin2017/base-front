@@ -1,31 +1,47 @@
 const resizeMixin = {
   data() {
     return {
-      reEvt: 'resize'
+      reEvt: 'resize',
+      // 是否开启了px2rem
+      px2remOn: false
     }
   },
   mounted() {
-    // orientationchange->手机屏幕转屏事件
-    // resize->页面大小改变事件(兼容pc，移动端)
-    this.reEvt = 'orientationchange' in window ? 'orientationchange' : 'resize'
-    window.addEventListener(this.reEvt, this.resetFontSize)
-    // DOMContentLoaded->dom加载完就执行,onload要dom/css/js都加载完才执行
-    document.addEventListener('DOMContentLoaded', this.setFontSize)
+    // 开启px2rem
+    if (process.env.VUE_APP_PXTOREM_ON === 'true') {
+      this.px2remOn = true
+      this.px2remConfig()
+    }
   },
-  beforeDestroy () {
-    window.removeEventListener(this.reEvt, this.resetFontSize)
+  beforeDestroy() {
+    if (this.px2remOn) {
+      document.addEventListener('DOMContentLoaded', this.setHtmlFontSize)
+      window.removeEventListener(this.reEvt, this.resetFontSize)
+    }
   },
   methods: {
-    setFontSize() {
+    // 绑定事件
+    px2remConfig() {
+      // orientationchange->手机屏幕转屏事件
+      // resize->页面大小改变事件(兼容pc，移动端)
+      this.reEvt =
+        'orientationchange' in window ? 'orientationchange' : 'resize'
+      window.addEventListener(this.reEvt, this.resetFontSize)
+      // DOMContentLoaded->dom加载完就执行,onload要dom/css/js都加载完才执行
+      document.addEventListener('DOMContentLoaded', this.setHtmlFontSize)
+    },
+    // 设置根字号
+    setHtmlFontSize() {
       const html = document.getElementsByTagName('html')[0]
-
       const designWidth = process.env.VUE_APP_DISIGN_WIDTH
-      const clientW = document.documentElement.clientWidth || document.body.clientWidth
+      const clientW =
+        document.documentElement.clientWidth || document.body.clientWidth
       if (!clientW) {
         return
       }
-      html.style.fontSize = 100 * (clientW / designWidth) + 'px'
+      html.style.fontSize = 100 * (clientW / parseInt(designWidth, 10)) + 'px'
     },
+    // 重置根字号
     resetFontSize() {
       const _this = this
       if (window.resetFontTimeout) {
@@ -33,7 +49,7 @@ const resizeMixin = {
       }
       //防抖
       window.resetFontTimeout = setTimeout(() => {
-        _this.setFontSize()
+        _this.setHtmlFontSize()
       }, 500)
     }
   }
