@@ -5,7 +5,7 @@ module.exports = {
   description: 'vue-tx',
   head: [['link', { rel: 'icon', href: '/logo.png' }]],
   themeConfig: {
-    sidebar: [['/', 'Start'], ['/developingStanderd/', '开发规范/约定']],
+    sidebar: [['/', 'Start'], ['/developingStanderd/developingStanderd.md', '开发规范/约定']],
     sidebarDepth: 2
   },
   dest: path.resolve('public', 'docs'),
