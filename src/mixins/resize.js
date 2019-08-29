@@ -15,7 +15,6 @@ const resizeMixin = {
   },
   beforeDestroy() {
     if (this.px2remOn) {
-      document.addEventListener('DOMContentLoaded', this.setHtmlFontSize)
       window.removeEventListener(this.reEvt, this.resetFontSize)
     }
   },

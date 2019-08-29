@@ -8,14 +8,18 @@ import { trim } from './stringUtil'
  * @returns {boolean}
  */
 function hasClass (el, cls) {
-  if (!el || !cls) return false
-  if (cls.indexOf(' ') !== -1) throw new Error('className should not contain space.')
+  if (!el || !cls) {
+    return false
+  }
+  if (cls.indexOf(' ') !== -1) {
+    throw new Error('className should not contain space.')
+  }
   if (el.classList) {
     return el.classList.contains(cls)
   } else {
     return (' ' + el.className + ' ').indexOf(' ' + cls + ' ') > -1
   }
-};
+}
 
 /**
  * 添加class
@@ -24,13 +28,17 @@ function hasClass (el, cls) {
  * @param {string} cls
  */
 function addClass (el, cls) {
-  if (!el) return
+  if (!el) {
+    return
+  }
   var curClass = el.className
   var classes = (cls || '').split(' ')
 
   for (var i = 0, j = classes.length; i < j; i++) {
     var clsName = classes[i]
-    if (!clsName) continue
+    if (!clsName) {
+      continue
+    }
 
     if (el.classList) {
       el.classList.add(clsName)
@@ -41,7 +49,7 @@ function addClass (el, cls) {
   if (!el.classList) {
     el.className = curClass
   }
-};
+}
 
 /**
  * 删除class
@@ -50,13 +58,17 @@ function addClass (el, cls) {
  * @param {string} cls
  */
 function removeClass (el, cls) {
-  if (!el || !cls) return
+  if (!el || !cls) {
+    return
+  }
   var classes = cls.split(' ')
   var curClass = ' ' + el.className + ' '
 
   for (var i = 0, j = classes.length; i < j; i++) {
     var clsName = classes[i]
-    if (!clsName) continue
+    if (!clsName) {
+      continue
+    }
 
     if (el.classList) {
       el.classList.remove(clsName)
@@ -67,6 +79,25 @@ function removeClass (el, cls) {
   if (!el.classList) {
     el.className = trim(curClass)
   }
-};
+}
 
-export { hasClass, addClass, removeClass }
+/**
+ * 获取元素绝对定位位置
+ *
+ * @param {Object} el
+ * @returns
+ */
+function getAbsolutePosition(el) {
+  var pos = {}
+  pos.x = el.offsetLeft + el.clientLeft
+  pos.y = el.offsetTop + el.clientTop
+  let p = el.offsetParent
+  while (p) {
+    pos.x += (p.offsetLeft + p.clientLeft)
+    pos.y += (p.offsetTop + p.clientTop)
+    p = p.offsetParent
+  }
+  return pos
+}
+
+export { hasClass, addClass, removeClass, getAbsolutePosition }

@@ -10,14 +10,7 @@ export default {
       mounted() {
         const name = this.$options.name
         const el = this.$el
-        // 排除第三方组件，笨办法,可能会误伤
-        const extrasReg = [
-          /^El[A-Z]+/ // elemetn-ui
-        ]
-        if (name && el) {
-          const isExtras = extrasReg.some(reg => reg.test(name))
-          !isExtras && el.setAttribute('cid', name)
-        }
+        name && el && el.setAttribute && el.setAttribute('cid', name)
       }
     })
   }

@@ -1,19 +1,22 @@
 import axios from 'axios'
+import qs from 'qs'
 
 let isDebugging = () => localStorage.debug === 'true'
 
 // create axios instance
 const request = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL, // base url
-  withCredentials: true, // wether send cookie when crossing origin
+  //withCredentials: true, // wether send cookie when crossing origin
   timeout: 8000
 })
 
 // request interceptor
 request.interceptors.request.use(
   config => {
-    // Do something before request is sent
-
+    // post方法，用qs转换参数
+    if (config.data && !config.noQs) {
+      config.data = qs.stringify(config.data)
+    }
     return config
   },
   error => {

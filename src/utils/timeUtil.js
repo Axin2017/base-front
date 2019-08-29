@@ -18,7 +18,7 @@ function format(date, formatStr) {
     'q+': Math.floor((this.getMonth() + 3) / 3), // 季度
     S: this.getMilliseconds() // 毫秒
   }
-  if (/(y+)/.test(formatStr)) {
+  if ((/(y+)/).test(formatStr)) {
     formatStr = formatStr.replace(RegExp.$1, this.getFullYear() + '')
   }
   for (var k in rule) {
@@ -55,24 +55,24 @@ function getDaysLeft(deadline, now = new Date(), containsToday = true) {
  * @param {Date} [now=new Date()] - 当前日期，默认当日
  * @returns {string} 返回超时时间
  */
-function getOverTimeStr(deadline, now = new Date()){
+function getOverTimeStr(deadline, now = new Date()) {
   if (deadline.constructor !== Date) {
     throw new Error('param deadline is not a Date')
   }
   let timespan = now - deadline
   let overTimeStr = ''
   const day = Math.floor(timespan / (3600 * 1000 * 24))
-  if (day){
+  if (day) {
     overTimeStr += day + '天'
     timespan = timespan - day * 3600 * 1000 * 24
   }
   const hour = Math.floor(timespan / (3600 * 1000))
-  if (hour){
+  if (hour) {
     overTimeStr += hour + '时'
     timespan = timespan - hour * 3600 * 1000
   }
   const minutes = Math.floor(timespan / (60 * 1000))
-  if (minutes){
+  if (minutes) {
     overTimeStr += minutes + '分'
   }
   return overTimeStr
