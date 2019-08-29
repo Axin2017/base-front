@@ -6,7 +6,7 @@ import request from '../utils/request'
  * @param {object} data
  * @returns {Promise}
  */
-function test(data){
+function test(data) {
   return request({
     method: 'get',
     url: '/waterEcology/getWaterConservation',
