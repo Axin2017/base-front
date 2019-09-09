@@ -10,5 +10,12 @@ module.exports = {
     } else {
       return devConfig
     }
+  },
+  css: {
+    loaderOptions: {
+      sass: {
+        data: '@import "@/styles/variable.scss";' //全局sass变量
+      }
+    }
   }
 }
