@@ -2,13 +2,13 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { registerPlugins } from './plugins'
+import { registerCustomPlugins } from './plugins'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/styles/index.scss' // global css
 Vue.config.productionTip = false
 // 注册自定义插件
-registerPlugins(Vue)
+registerCustomPlugins(Vue)
 
 // elment-ui
 Vue.use(Element, {
