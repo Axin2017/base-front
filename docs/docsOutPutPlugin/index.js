@@ -63,7 +63,7 @@ class DocsOutPutPlugin {
 
 const outPut = new DocsOutPutPlugin({
   basePath: process.cwd(),
-  output: 'docsOutput', // 导出的目标目录
+  output: 'docs/docsOutput', // 导出的目标目录
   dir: 'docs' // 包含md文档的顶层目录
 })
 
