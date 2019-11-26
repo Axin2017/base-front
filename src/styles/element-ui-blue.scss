@@ -1,0 +1,159 @@
+/* message 字体大小 */
+.el-message {
+  font-size: 22px;
+}
+.el-scrollbar__wrap {
+  overflow-x: hidden;
+}
+//头部下拉
+.top-select {
+  width: 112px;
+  background: #293c98;
+  border: none;
+}
+.top-select .el-dropdown-menu__item,
+.top-select .el-dropdown-menu--small .el-dropdown-menu__item {
+  padding: 0;
+}
+.top-select .el-dropdown-menu__item {
+  width: 95%;
+  margin: 0 auto;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  font-family: 'Microsoft YaHei';
+  color: #d6ddfd;
+}
+.top-select .el-popper .popper__arrow {
+  border-bottom-color: rgba(79, 110, 255, 0.85) !important;
+  filter: drop-shadow(0 2px 0.12rem rgba(79, 110, 255, 0.85));
+}
+.top-select .popper__arrow::after {
+  border-bottom-color: #293c98 !important;
+}
+.top-select li:hover {
+  background-color: #354dbd !important;
+  color: #d6ddfd !important;
+}
+.el-popper[x-placement^='bottom'] .popper__arrow {
+  left: 44% !important;
+}
+.top-menu span {
+  display: block;
+  width: 100%;
+  height: 95%;
+  font-size: 16px;
+  font-family: 'Microsoft YaHei';
+  color: white;
+}
+.el-dropdown-menu li {
+  border-radius: 4px;
+  &.actived {
+    background-color: #354dbd !important;
+    color: #d6ddfd !important;
+  }
+}
+.el-popper[x-placement^='bottom'] .popper__arrow {
+  border-bottom-color: rgba(79, 110, 255, 0.85) !important;
+}
+.user-drop-menu .popper__arrow::after,
+.user-drop-menu .el-popper[x-placement^='bottom'] .popper__arrow::after {
+  border-bottom-color: rgba(79, 110, 255, 0.85) !important;
+}
+//头部下拉完
+/* arcgis指北针样式,修改平面的与3D的相同 */
+.esri-compass .esri-icon-dial:before {
+  content: '\e680';
+}
+.is-header-card .esri-ui-top-right {
+  right: 35px;
+}
+
+// 数据--树样式-----------------------
+.aside {
+  .el-tree {
+    background-color: transparent;
+    color: #a0ade2;
+  }
+  .tree-content .el-collapse {
+    border: 0;
+  }
+  // 头部
+  .tree-content .el-collapse-item__header {
+    height: 36px;
+    padding-left: 20px;
+    background: transparent;
+    border: none;
+    border-left: 4px solid transparent;
+    color: #a0ade2;
+    transition: all 0.3s;
+  }
+  // 头部
+  .el-collapse-item__header.is-active {
+    color: white;
+    background-color: #192870;
+    border-left: 4px solid #21bdca;
+  }
+  // 鼠标放置事件
+  .el-tree-node__content:hover {
+    color: white;
+    background-color: transparent;
+  }
+  .is-current {
+    background-color: transparent;
+  }
+  // 树的高度不固定
+  .el-tree-node__content {
+    height: auto;
+  }
+  // 选中不再变成白色
+  .el-tree-node:focus > .el-tree-node__content {
+    background-color: transparent;
+    color: white;
+  }
+  // 鼠标放置颜色
+  .tree-content .el-collapse-item__header:hover {
+    color: aquamarine;
+  }
+  // 内容展示
+  .tree-content .el-collapse-item__wrap {
+    background: transparent;
+    border: 0;
+  }
+  .tree-content .el-collapse-item__content {
+    padding: 0;
+    color: #a0ade2;
+  }
+  // 树可选内容样式
+  .el-tree-node__content .el-checkbox + span {
+    color: white;
+  }
+  .el-tree-node__content .el-checkbox .el-checkbox__inner {
+    border-color: white;
+  }
+  // 树不能选择
+  .el-tree-node__content .is-disabled + span {
+    color: #a1aee4;
+  }
+  .el-tree-node__content .is-disabled .el-checkbox__inner {
+    border: none;
+    background-color: #525f9d;
+  }
+  // 树已经选择 + 背景
+  .el-tree-node__content .is-checked + span {
+    color: #ffb400;
+  }
+  .el-tree-node__content .is-checked .el-checkbox__inner {
+    background-color: #ffb400;
+    border-color: #ffb400;
+  }
+  // 树半选 + 背景
+  .el-tree-node__content .is-indeterminate .el-checkbox__inner {
+    background-color: transparent;
+    border-color: #7c91ed;
+  }
+  .data-resource .el-tree {
+    padding: 10px 20px;
+  }
+}

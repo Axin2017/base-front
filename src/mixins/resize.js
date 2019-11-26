@@ -38,7 +38,9 @@ const resizeMixin = {
       if (!clientW) {
         return
       }
-      html.style.fontSize = 100 * (clientW / parseInt(designWidth, 10)) + 'px'
+      const fontSize = process.env.VUE_APP_ROOT_VALUE * (clientW / parseInt(designWidth, 10))
+      html.style.fontSize = fontSize + 'px'
+      this.$store.commit('global/setHtmlFontSize', fontSize)
     },
     // 重置根字号
     resetFontSize() {

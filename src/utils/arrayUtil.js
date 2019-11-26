@@ -9,7 +9,7 @@ import { deepClone } from './objectUtil'
  * @param {string} pidField the parent's id field
  * @param {Funcction} rooterFunc the Function to judge array item is rooter node or is not
  * @param {string} childrenName the name of node's children when createing tree,default 'children'
- * @returns {Object} tree object
+ * @returns {Object{mapObj,rooter}} { mapObj, rooter }
  */
 function arrayToTree(arr, idField, pidField, rooterFunc, childrenName = 'children') {
   // 克隆数组，否则当数组项为对象时，会修改原数组
@@ -20,9 +20,11 @@ function arrayToTree(arr, idField, pidField, rooterFunc, childrenName = 'childre
     return total
   }, {})
   let rooter = null
+  // 保存没有父节点的节点，如果没有传rooterFunc，自己创建一个根节点，把数组放进去返回根节点
+  const noParentNodes = []
   // 循环挂载节点，返回根节点
   arrCloned.forEach(element => {
-    if (!rooter && rooterFunc(element)) {
+    if (rooterFunc && !rooter && rooterFunc(element)) {
       rooter = element
     }
     const parentNode = mapObj[element[pidField]]
@@ -31,9 +33,19 @@ function arrayToTree(arr, idField, pidField, rooterFunc, childrenName = 'childre
         parentNode[childrenName] = []
       }
       parentNode[childrenName].push(element)
+    } else {
+      noParentNodes.push(element[idField])
     }
   })
-  return rooter
+  // 当根节点是空的时候，创建一个根节点，把没有父节点的节点放进去
+  if (rooter === null) {
+    rooter = {
+      [childrenName]: noParentNodes.map(noParentNodeId => {
+        return mapObj[noParentNodeId]
+      })
+    }
+  }
+  return { mapObj, rooter }
 }
 
 export { arrayToTree }

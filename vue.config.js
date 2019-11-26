@@ -14,7 +14,25 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        data: '@import "@/styles/variable.scss";' //全局sass变量
+        data: '@import "@/styles/theme-blue.scss";'
+      }
+    }
+  },
+  devServer: {
+    proxy: {
+      '^/arcgis88': {
+        target: 'http://ghonline.geo-k.cn:88',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/arcgis88': ''// rewrite path
+        }
+      },
+      '^/arcgis6080': {
+        target: 'http://ghonline.geo-k.cn:6080',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/arcgis6080': ''// rewrite path
+        }
       }
     }
   }

@@ -1,7 +1,7 @@
 import cidPlugin from './cidPlugin'
 
-function registerCustomPlugins(vue) {
+function registerPlugins(vue) {
   vue.use(cidPlugin)
 }
 
-export { registerCustomPlugins }
+export { registerPlugins }
